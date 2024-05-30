@@ -43,7 +43,9 @@ struct ContentView: View {
     func addNewWord() {
         let userAnswer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard userAnswer.count > 0 else {return}
+        guard userAnswer.count >= 3 else {
+            return wordError(title: "Word too short!", message: "You have entered a very short word.")
+        }
         
         //more validations to come
         guard isUnique(word: userAnswer) else {
